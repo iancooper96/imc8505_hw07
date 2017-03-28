@@ -399,12 +399,12 @@ void System::test_interface()
 	}
 	else if(input == 8)
 	{
-		clean();
-		view_robots();
+		cout << "\n\nExiting...\n";
+		exit(0);
 	}
 	else
 	{
-
+		cout << "\n\nExiting...\n";
 		exit(0);
 	}
 }
