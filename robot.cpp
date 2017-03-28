@@ -347,14 +347,15 @@ void System::test_interface()
     *    5) Add Battery      *
     *    6) Create Robot     *
     *    7) View Robot       *
+    *    8) Exit             *
     *                        *
     **************************
 
-    Option!!!: )";
+    Option: )";
 	cout << interface;
 	//cin >> input;
 
-	while (!(cin >> input) || (input < 0 || input > 7) ) // <<< note use of "short circuit" logical operation here
+	while (!(cin >> input) || (input < 0 || input > 8) ) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Enter valid option: ";
 	    cin.clear();
@@ -396,8 +397,14 @@ void System::test_interface()
 		clean();
 		view_robots();
 	}
+	else if(input == 8)
+	{
+		clean();
+		view_robots();
+	}
 	else
 	{
+
 		exit(0);
 	}
 }
@@ -420,11 +427,9 @@ void System::create_robot()
 	}
 	cout << "\nSelect a Head [Part #]: ";
 	// cin >> input_head;
-
-
 	while (!(cin >> input_head) || input_head < 0) // <<< note use of "short circuit" logical operation here
 	{
-	    cout << "Bad input - try again: ";
+	    cout << "Please input a valid part number.";
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 	}
