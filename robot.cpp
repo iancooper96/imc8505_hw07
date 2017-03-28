@@ -4,9 +4,6 @@
 #include <sstream>
 using namespace std;
 
-////////////////////
-//	    Parts	  //
-////////////////////
 
 class Head
 {
@@ -255,13 +252,10 @@ double Locomotor::get_price()
 string Locomotor::to_string()
 {
 	stringstream to_string;
-	to_string << "#" << part_num << " " << part_name << "\nWeight: " << weight << " kg\nPower Consumed by Part[watts]: " << power_consumed << "\nMax Speed: " << max_speed << " mph" <<"\nCost: $" << cost << "\nDescription: " << description << "\n\n";
+	to_string << "#" << part_num << " " << part_name << "\nWeight: " << weight << " kg\nPower Consumed by Part(watts): " << power_consumed << "\nMax Speed: " << max_speed << " mph" <<"\nCost: $" << cost << "\nDescription: " << description << "\n\n";
 	return to_string.str();
 }
 
-/////////////////////
-//		Robot	   //
-/////////////////////
 
 class Robot
 {
@@ -308,10 +302,6 @@ string Robot::to_string()
 	to_string << model_name << "\nPrice: " << get_model_price();
 	return to_string.str();
 }
-
-/////////////////////
-//		System	   //
-/////////////////////
 
 class System
 {
@@ -425,7 +415,7 @@ void System::create_robot()
 			cout << list_of_heads[i].to_string();
 		}
 	}
-	cout << "\nSelect a Head [Part #]: ";
+	cout << "\nSelect a Head (Part #): ";
 	// cin >> input_head;
 	while (!(cin >> input_head) || input_head < 0) // <<< note use of "short circuit" logical operation here
 	{
@@ -449,11 +439,11 @@ void System::create_robot()
 			cout << list_of_torsos[i].to_string();
 		}
 	}
-	cout << "\nSelect a Torso [Part#]";
+	cout << "\nSelect a Torso (Part#)";
 	//cin >> input_torso;
 	while (!(cin >> input_torso) || input_torso < 0) // <<< note use of "short circuit" logical operation here
 	{
-	    cout << "Bad input - try again: ";
+	    cout << "Input valid parts number: ";
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 	}
@@ -478,7 +468,7 @@ void System::create_robot()
 			//cin >> input_batteries[i];
 			while (!(cin >> input_batteries[i]) || input_batteries[i] < 0) // <<< note use of "short circuit" logical operation here
 			{
-			    cout << "Bad input - try again: ";
+			    cout << "Input valid battery number: ";
 			    cin.clear();
 			    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 			}
@@ -508,7 +498,7 @@ void System::create_robot()
 	//cin >> input_left_arm;
 	while (!(cin >> input_left_arm) || input_left_arm < 0) // <<< note use of "short circuit" logical operation here
 	{
-	    cout << "Bad input - try again: ";
+	    cout << "Input valid part number: ";
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 	}
@@ -532,7 +522,7 @@ void System::create_robot()
 	//cin >> input_right_arm;
 	while (!(cin >> input_right_arm) || input_right_arm < 0) // <<< note use of "short circuit" logical operation here
 	{
-	    cout << "Bad input - try again: ";
+	    cout << "Input valid part number: ";
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 	}
@@ -556,7 +546,7 @@ void System::create_robot()
 	//cin >> input_locomotor;
 	while (!(cin >> input_locomotor) || input_locomotor < 0) // <<< note use of "short circuit" logical operation here
 	{
-	    cout << "Bad input - try again: ";
+	    cout << "Select valid Locomotor: ";
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 	}
@@ -598,20 +588,38 @@ void System::add_head()
 	cout << "Name of Part: ";
 	getline(cin,part_name);
 	getline(cin,part_name);
+
 	int part_num = list_of_heads.size();
 	int weight;
-	cout << "Weight of Part [kg/Integer]: ";
-	cin >> weight;
+
+	cout << "Weight of Part (kg): ";
+	// cin >> weight;
+	while (!(cin >> weight) || weight < 0) // <<< note use of "short circuit" logical operation here
+	{
+	    cout << "Select valid Locomotor: ";
+	    cin.clear();
+	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
+	}
+	
 	double cost;
-	cout << "Price of Part: $";
-	cin >> cost;
+	cout << "Price of Part: ";
+	//cin >> cost;
+	while (!(cin >> cost) || cost < 0) // <<< note use of "short circuit" logical operation here
+	{
+	    cout << "Select valid Locomotor: ";
+	    cin.clear();
+	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
+	}
+	
 	string description;
 	cout << "Description of Part: ";
 	getline(cin,description);
 	getline(cin,description);
+	
 	Head head(part_name, part_num, weight, cost, description);
 	list_of_heads.push_back(head);
 	cout << "";
+	
 	clean();
 	test_interface();
 }
@@ -622,20 +630,43 @@ void System::add_arm()
 	cout << "Name of Part: ";
 	getline(cin,part_name);
 	getline(cin,part_name);
+	
 	int part_num = list_of_arms.size();
 	int weight;
-	cout << "Weight of Part [kg/Integer]: ";
-	cin >> weight;
+	cout << "Weight of Part (kg): ";
+	//cin >> weight;
+	while (!(cin >> weight) || weight < 0) // <<< note use of "short circuit" logical operation here
+	{
+	    cout << "Select valid Locomotor: ";
+	    cin.clear();
+	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
+	}
+	
 	double cost;
 	cout << "Price of part: $";
-	cin >> cost;
+	//cin >> cost;
+	while (!(cin >> cost) || cost < 0) // <<< note use of "short circuit" logical operation here
+	{
+	    cout << "Select valid Locomotor: ";
+	    cin.clear();
+	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
+	}
+	
 	int power_usage;
-	cout << "Power Consumed by Part [Watts/Integer]: ";
-	cin >> power_usage;
+	cout << "Power Consumed by Part (watts): ";
+	//cin >> power_usage;
+	while (!(cin >> power_usage) || power_usage < 0) // <<< note use of "short circuit" logical operation here
+	{
+	    cout << "Select valid Locomotor: ";
+	    cin.clear();
+	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
+	}
+	
 	string description;
 	cout << "Description of Part: ";
 	getline(cin,description);
 	getline(cin,description);
+	
 	Arm arm(part_name, part_num, weight, cost, power_usage, description);
 	list_of_arms.push_back(arm);
 	cout << "";
@@ -649,23 +680,48 @@ void System::add_torso()
 	cout << "Name of Part: ";
 	getline(cin,part_name);
 	getline(cin,part_name);
+
 	int part_num = list_of_torsos.size();
+	
 	int weight;
-	cout << "Weight of Part [kg/Integer]: ";
-	cin >> weight;
+	cout << "Weight of Part (kg): ";
+	//cin >> weight;
+	while (!(cin >> weight) || weight < 0) // <<< note use of "short circuit" logical operation here
+	{
+	    cout << "Select valid Locomotor: ";
+	    cin.clear();
+	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
+	}
+	
 	int battery_num;
 	cout << "Number of Battery Compartments: ";
-	cin >> battery_num;
+	//cin >> battery_num;
+	while (!(cin >> battery_num) || battery_num < 0) // <<< note use of "short circuit" logical operation here
+	{
+	    cout << "Select valid Locomotor: ";
+	    cin.clear();
+	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
+	}
+	
 	double cost;
-	cout << "Price of part: $";
-	cin >> cost;
+	cout << "Price of part: ";
+	//cin >> cost;
+	while (!(cin >> cost) || cost < 0) // <<< note use of "short circuit" logical operation here
+	{
+	    cout << "Select valid Locomotor: ";
+	    cin.clear();
+	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
+	}
+	
 	string description;
 	cout << "Description of Part: ";
 	getline(cin,description);
 	getline(cin,description);
+	
 	Torso torso(part_name, part_num, weight, battery_num, cost, description);
 	list_of_torsos.push_back(torso);
 	cout << "";
+	
 	clean();
 	test_interface();
 }
@@ -677,39 +733,43 @@ void System::add_locomotor()
 	getline(cin,part_name);
 	getline(cin,part_name);
 	int part_num = list_of_locomotors.size();
+	
 	double weight;
-	cout << "Weight of Part [kg]: ";
-	cin >> weight;
+	cout << "Weight of Part (kg): ";
+	//cin >> weight;
 		while (!(cin >> weight) || weight < 0) // <<< note use of "short circuit" logical operation here
 	{
-	    cout << "Bad input - try again: ";
+	    cout << "Please input valid weight: ";
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 	} 
+	
 	double cost;
-	cout << "Price of part: $";
+	cout << "Price of part: ";
 	//cin >> cost;
 		while (!(cin >> cost) || cost < 0) // <<< note use of "short circuit" logical operation here
 	{
-	    cout << "Bad input - try again: ";
+	    cout << "Please input valid price: ";
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 	}
+	
 	int power_consumed;
-	cout << "Power Consumed by Part [Watts/Integer]: ";
+	cout << "Power Consumed by Part (watts): ";
 	//cin >> power_consumed;
 			while (!(cin >> power_consumed) || power_consumed < 0) // <<< note use of "short circuit" logical operation here
 	{
-	    cout << "Bad input - try again: ";
+	    cout << "Please input valid power consumption: ";
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 	}
+	
 	int max_speed;
-	cout << "Max Speed [MPH/Integer]: ";
+	cout << "Max Speed (mph): ";
 	//cin >> max_speed;
 			while (!(cin >> max_speed) || max_speed < 0) // <<< note use of "short circuit" logical operation here
 	{
-	    cout << "Bad input - try again: ";
+	    cout << "Please input valid speed: ";
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 	}
@@ -717,6 +777,7 @@ void System::add_locomotor()
 	cout << "Description of Part: ";
 	getline(cin,description);
 	getline(cin,description);
+	
 	Locomotor locomotor(part_name, part_num, weight, cost, power_consumed, max_speed, description);
 	list_of_locomotors.push_back(locomotor);
 	cout << "";
@@ -731,24 +792,26 @@ void System::add_battery()
 	getline(cin,part_name);
 	getline(cin,part_name);
 	int part_num = list_of_batteries.size();
+	
 	int power_stored;
-	cout << "Amount of Stored Power [killowatt hours/Integer]: ";
+	cout << "Amount of Stored Power (kilowatt hours): ";
 	cin >> power_stored;
+	
 	int weight;
-	cout << "Weight of Part [kg/Integer]: ";
+	cout << "Weight of Part (kg): ";
 	//cin >> weight;
 	while (!(cin >> weight) || weight < 0) // <<< note use of "short circuit" logical operation here
 	{
-	    cout << "Bad input - try again: ";
+	    cout << "Please input valid weight: ";
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 	}
 	double cost;
-	cout << "Price of part: $";
+	cout << "Price of part: ";
 	//cin >> cost;
 	while (!(cin >> cost) || cost < 0) // <<< note use of "short circuit" logical operation here
 	{
-	    cout << "Bad input - try again: ";
+	    cout << "Please input valid price: ";
 	    cin.clear();
 	    cin.ignore(INT_MAX, '\n'); // NB: preferred method for flushing cin
 	}
@@ -756,9 +819,11 @@ void System::add_battery()
 	cout << "Description of Part: ";
 	getline(cin,description);
 	getline(cin,description);
+	
 	Battery battery(part_name, part_num, power_stored, weight, cost, description);
 	list_of_batteries.push_back(battery);
 	cout << "";
+	
 	clean();
 	test_interface();
 }
