@@ -36,7 +36,8 @@ double Head::get_price()
 string Head::to_string()
 {
 	stringstream to_string;
-	to_string << "#" << part_num << " " << part_name << "\nWeight: " << weight << " kg\nCost: $" << cost << "\nDescription: " << description << "\n\n";
+	to_string << "#" << part_num << " " << part_name << "\nWeight: " << weight << " kg\n
+	Cost: $" << cost << "\nDescription: " << description << "\n\n";
 	return to_string.str();
 }
 
@@ -416,7 +417,7 @@ void System::create_robot()
 		}
 	}
 	cout << "\nSelect a Head (Part #): ";
-	// cin >> input_head;
+	
 	while (!(cin >> input_head) || input_head < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Please input a valid part number.";
@@ -440,7 +441,7 @@ void System::create_robot()
 		}
 	}
 	cout << "\nSelect a Torso (Part#)";
-	//cin >> input_torso;
+	
 	while (!(cin >> input_torso) || input_torso < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Input valid parts number: ";
@@ -465,7 +466,7 @@ void System::create_robot()
 				cout << list_of_batteries[x].to_string();
 			}
 			cout << "\nSelect Battery [#" << (i+1) << "]: ";
-			//cin >> input_batteries[i];
+			
 			while (!(cin >> input_batteries[i]) || input_batteries[i] < 0) // <<< note use of "short circuit" logical operation here
 			{
 			    cout << "Input valid battery number: ";
@@ -495,7 +496,7 @@ void System::create_robot()
 		}
 	}
 	cout << "\nSelect a Left Arm [Part #]: ";
-	//cin >> input_left_arm;
+	
 	while (!(cin >> input_left_arm) || input_left_arm < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Input valid part number: ";
@@ -519,7 +520,7 @@ void System::create_robot()
 		}
 	}
 	cout << "\nSelect a Right Arm [Part #]: ";
-	//cin >> input_right_arm;
+	
 	while (!(cin >> input_right_arm) || input_right_arm < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Input valid part number: ";
@@ -543,7 +544,7 @@ void System::create_robot()
 		}
 	}
 	cout << "\nSelect a Locomotor: ";
-	//cin >> input_locomotor;
+	
 	while (!(cin >> input_locomotor) || input_locomotor < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Select valid Locomotor: ";
@@ -593,7 +594,7 @@ void System::add_head()
 	int weight;
 
 	cout << "Weight of Part (kg): ";
-	// cin >> weight;
+	
 	while (!(cin >> weight) || weight < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Select valid Locomotor: ";
@@ -603,7 +604,7 @@ void System::add_head()
 	
 	double cost;
 	cout << "Price of Part: ";
-	//cin >> cost;
+	
 	while (!(cin >> cost) || cost < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Select valid Locomotor: ";
@@ -634,7 +635,7 @@ void System::add_arm()
 	int part_num = list_of_arms.size();
 	int weight;
 	cout << "Weight of Part (kg): ";
-	//cin >> weight;
+	
 	while (!(cin >> weight) || weight < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Select valid Locomotor: ";
@@ -644,7 +645,7 @@ void System::add_arm()
 	
 	double cost;
 	cout << "Price of part: $";
-	//cin >> cost;
+	
 	while (!(cin >> cost) || cost < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Select valid Locomotor: ";
@@ -654,7 +655,7 @@ void System::add_arm()
 	
 	int power_usage;
 	cout << "Power Consumed by Part (watts): ";
-	//cin >> power_usage;
+	
 	while (!(cin >> power_usage) || power_usage < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Select valid Locomotor: ";
@@ -685,7 +686,7 @@ void System::add_torso()
 	
 	int weight;
 	cout << "Weight of Part (kg): ";
-	//cin >> weight;
+	
 	while (!(cin >> weight) || weight < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Select valid Locomotor: ";
@@ -695,7 +696,7 @@ void System::add_torso()
 	
 	int battery_num;
 	cout << "Number of Battery Compartments: ";
-	//cin >> battery_num;
+	
 	while (!(cin >> battery_num) || battery_num < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Select valid Locomotor: ";
@@ -705,7 +706,7 @@ void System::add_torso()
 	
 	double cost;
 	cout << "Price of part: ";
-	//cin >> cost;
+	
 	while (!(cin >> cost) || cost < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Select valid Locomotor: ";
@@ -736,7 +737,7 @@ void System::add_locomotor()
 	
 	double weight;
 	cout << "Weight of Part (kg): ";
-	//cin >> weight;
+	
 		while (!(cin >> weight) || weight < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Please input valid weight: ";
@@ -746,7 +747,7 @@ void System::add_locomotor()
 	
 	double cost;
 	cout << "Price of part: ";
-	//cin >> cost;
+	
 		while (!(cin >> cost) || cost < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Please input valid price: ";
@@ -756,7 +757,7 @@ void System::add_locomotor()
 	
 	int power_consumed;
 	cout << "Power Consumed by Part (watts): ";
-	//cin >> power_consumed;
+	
 			while (!(cin >> power_consumed) || power_consumed < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Please input valid power consumption: ";
@@ -766,7 +767,7 @@ void System::add_locomotor()
 	
 	int max_speed;
 	cout << "Max Speed (mph): ";
-	//cin >> max_speed;
+	
 			while (!(cin >> max_speed) || max_speed < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Please input valid speed: ";
@@ -799,7 +800,7 @@ void System::add_battery()
 	
 	int weight;
 	cout << "Weight of Part (kg): ";
-	//cin >> weight;
+
 	while (!(cin >> weight) || weight < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Please input valid weight: ";
@@ -808,7 +809,7 @@ void System::add_battery()
 	}
 	double cost;
 	cout << "Price of part: ";
-	//cin >> cost;
+	
 	while (!(cin >> cost) || cost < 0) // <<< note use of "short circuit" logical operation here
 	{
 	    cout << "Please input valid price: ";
